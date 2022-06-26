@@ -1,40 +1,213 @@
-let result = 0;
+let curNum = null;
+let storeNum = null;
+let displayValue = curNum;
 
 
-function add (a, b) {
-    let result = a + b;
+function add (storeNum, curNum) {
+    let result = Number(storeNum) + Number(curNum);
     return result;
 }
 
-function subtract (a, b) {
-    let result = a -b;
+function subtract (storeNum, curNum) {
+    let result = storeNum -curNum;
     return result;
 }
 
-function multiply (a, b) {
-    let result = a * b; 
+function multiply (storeNum, curNum) {
+    let result = storeNum * curNum; 
     return result;
 }
 
-function divide (a, b) {
-    let result = a / b;
+function divide (storeNum, curNum) {
+    let result = storeNum / curNum;
     return result;
 }
 
-function operate (num1, num2, operator) {
-    if(operator = +){
-        add(num1, num2);
+function operate (storeNum, curNum, operator) {
+    result = null;
+    if(operator == "+" ){
+        result = add(storeNum, curNum);
+        return result;
     }
-    if(operator = -){
-        subtract(num1, num2);
+    if(operator == "-"){
+        result = subtract(storeNum, curNum);
+        return result;
     }
-    if(operator = *){
-        multiply(num1, num2);
+    if(operator == "*"){
+        result = multiply(storeNum, curNum);
+        return result;
     }
-    if(operator = /){
-        divide(num1, num2);
+    if(operator == "/"){
+        result = divide(storeNum, curNum);
+        return result;
     }
+
 }
 
-const resultsBox = document.getElementsByClassName("results");
-resultsBox.write(result); //WIP. might need to add a new div inside the box. Writing the "result" var here, and eventually updating it.
+//results display box stuff
+const resultsBox = document.querySelector("#container .results")
+const displayResult = document.createElement("div");
+displayResult.innerHTML = displayValue;
+displayResult.style.fontSize = "larger";
+displayResult.style.fontWeight = "bolder";
+resultsBox.appendChild(displayResult);
+
+function updateDisplay(){
+    displayResult.innerHTML=displayValue;
+    resultsBox.appendChild(displayResult);
+}
+
+//buttons stuff
+function btn1(){
+    if(curNum == null) {
+     curNum = "1";
+     displayValue = curNum;
+     updateDisplay(displayValue);
+     return curNum;   
+    }
+    curNum = curNum + "1";
+    displayValue = curNum;
+    updateDisplay();
+}
+function btn2(){
+    if(curNum == null) {
+     curNum = "2";
+     displayValue = curNum;
+     updateDisplay(displayValue);
+     return curNum;
+    }
+    curNum = curNum + "2";
+    displayValue = curNum;
+    updateDisplay(displayValue);
+}
+function btn3(){
+    if(curNum == null) {
+     curNum = "3";
+     displayValue = curNum;
+     updateDisplay(displayValue);
+     return curNum;
+    }
+    curNum = curNum + "3";
+    displayValue = curNum;
+    updateDisplay(displayValue);
+}
+function btn4(){
+    if(curNum == null) {
+     curNum = "4";
+     displayValue = curNum;
+     updateDisplay(displayValue);
+     return curNum;
+    }
+    curNum = curNum + "4";
+    displayValue = curNum;
+    updateDisplay(displayValue);
+}
+function btn5(){
+    if(curNum == null) {
+     curNum = "5";
+     displayValue = curNum;
+     updateDisplay(displayValue);
+     return curNum;
+    }
+    curNum = curNum + "5";
+    displayValue = curNum;
+    updateDisplay(displayValue);
+}
+function btn6(){
+    if(curNum == null) {
+     curNum = "6";
+     displayValue = curNum;
+     updateDisplay(displayValue);
+     return curNum;
+    }
+    curNum = curNum + "6";
+    displayValue = curNum;
+    updateDisplay(displayValue);
+}
+function btn7(){
+    if(curNum == null) {
+     curNum = "7";
+     displayValue = curNum;
+     updateDisplay(displayValue);
+     return curNum;
+    }
+    curNum = curNum + "7";
+    displayValue = curNum;
+    updateDisplay(displayValue);
+}
+function btn8(){
+    if(curNum == null) {
+     curNum = "8";
+     displayValue = curNum;
+     updateDisplay(displayValue);
+     return curNum;
+    }
+    curNum = curNum + "8";
+    displayValue = curNum;
+    updateDisplay(displayValue);
+}
+function btn9(){
+    if(curNum == null) {
+     curNum = "9";
+     displayValue = curNum;
+     updateDisplay(displayValue);
+     return curNum;
+    }
+    curNum = curNum + "9";
+    displayValue = curNum;
+    updateDisplay(displayValue);
+}
+function btn0(){
+    if(curNum == null) {
+     curNum = "0";
+     displayValue = curNum;
+     updateDisplay(displayValue);
+     return curNum;
+    }
+    curNum = curNum + "0";
+    displayValue = curNum;
+    updateDisplay(displayValue);
+}
+function clearBtn(){
+       curNum = null;
+       storeNum = null;
+       displayValue = curNum;
+       updateDisplay(displayValue);
+}
+function addBtn() {
+    storeNum = curNum;
+    curNum = null;
+    operator = "+"
+    displayValue = curNum;
+    updateDisplay(displayValue);
+}
+function subBtn() {
+    storeNum = curNum;
+    curNum = null;
+    operator = "-"
+    displayValue = curNum;
+    updateDisplay(displayValue);
+}
+function multBtn() {
+    storeNum = curNum;
+    curNum = null;
+    operator = "*"
+    displayValue = curNum;
+    updateDisplay(displayValue);
+}
+function divBtn() {
+    storeNum = curNum;
+    curNum = null;
+    operator = "/"
+    displayValue = curNum;
+    updateDisplay(displayValue);
+}
+
+
+function equalsBtn() {
+    curNum = operate(storeNum, curNum, operator);
+    displayValue = curNum;
+    console.log(result)
+    updateDisplay(displayValue);
+    return result;
+}
